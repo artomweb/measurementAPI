@@ -49,7 +49,7 @@ const allowCors = (fn) => async(req, res) => {
 const handler = (req, res) => {
     if (!req.query.measure) {
         res.json({
-            ERROR: "No measurement supplied",
+            ERROR: "No measurement supplied!",
         });
     } else {
         csv()
