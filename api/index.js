@@ -60,12 +60,11 @@ const handler = (req, res) => {
                     Math.abs(parseInt(a["size/m"]) - req.query.measure) -
                     Math.abs(parseInt(b["size/m"]) - req.query.measure)
                 )[0];
-                selectedUnit = selectedUnit.map((a) => {
-                    return {
-                        measureName: a["Measurement Name"],
-                        actualValue: a["size/m"],
-                    };
-                });
+                selectedUnit.measureName = selectedUnit["Measurement Name"];
+                selectedUnit.actualValue = selectedUnit["size/m"];
+                delete selectedUnit["Measurement Name"];
+                delete selectedUnit["size/m"];
+                console.log(selectedUnit);
                 res.json(selectedUnit);
             })
             .catch((err) => {
