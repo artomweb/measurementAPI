@@ -4,8 +4,13 @@ let jsonArrayObj;
 
 csv()
     .fromFile("files/sheet.csv")
-    .then(function(json) {
-        jsonArrayObj = json;
+    .then(function(data) {
+        data = data.map((obj) => {
+            return { measureName: obj["Measurement Name"], actualValue: parseFloat(obj["size/m"].replace(/,/g, ""), 10) };
+        });
+        jsonArrayObj = data.slice();
+
+        console.log(jsonArrayObj);
 
         // console.log("closest object", selectedObject);
         // console.log("closest objects", allClosestObjects);
@@ -39,12 +44,8 @@ const handler = (req, res) => {
             ERROR: "No measurement supplied!",
         });
     } else {
-        json = json.map((obj) => {
-            return { measureName: obj["Measurement Name"], actualValue: parseFloat(obj["size/m"].replace(/,/g, ""), 10) };
-        });
-
         let selectedObject = jsonArrayObj.reduce((a, b) => {
-            return Math.abs(b.actualValue - 1) < Math.abs(a.actualValue - 1) ? b : a;
+            return Math.abs(b.actualValue - +req.query.measure) < Math.abs(a.actualValue - +req.query.measure) ? b : a;
         });
 
         let allClosestObjects = jsonArrayObj.filter((f) => {
