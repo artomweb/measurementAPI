@@ -1,73 +1,108 @@
 Measurement Name,size/m
-diameter of an atom,0.000000003
-width of a human hair,0.0000254
-minimum diameter of a pebble,0.004
-size of the average pea,0.008
-minimum diameter of a golf ball,0.042672
-average diameter of a tomato,0.06
-maximum diameter of a pebble,0.064
-lenght of a normal rubber duck,0.085
-length of a playing card,0.089
-length of an iPhone 12,0.1467
-length of a US $20 note,0.166
-length of the average banana,0.1778
-length of a pencil,0.1905
-length of a toothbrush,0.2
-diameter of a bowling ball,0.2159
-diameter of a football,0.219964
-diameter of an ultimate frisbee,0.235
-length of a peice of A4 paper,0.297
-length of a loaf of bread,0.3
-height of a 720ml wine bottle,0.3048
-height of a bowling pin,0.381
-diameter of a regulation dart board,0.451
-average height of a desk chair,0.4572
-width of the Mona Lisa,0.53
-width of a standard dishwasher,0.6096
-width of a 24 inch monitor,0.61214
-average height of desk,0.762
-length of a hockey stick,0.9271
-height of a greater flamingo,1.3
-width of a 60 inch TV,1.328
-length of a men's tie,1.4478
-width of a baby grand piano,1.46
+distance to the moon,"384,399,000"
+length of The Great Wall of China,"21,196,000"
+diameter of the Earth,"12,742,000"
+length of The Amazon River,"6,437,000"
+distance between New York and London,"5,585,000"
+length of The Mississippi River,"3,766,000"
+distance from New York to Los Angeles,"2,445,430"
+"length of The Grand Canyon, Arizona USA","446,000"
+total length of the London Underground,"402,336"
+distance from Amsterdam to London,"361,700"
+distance from London to Paris,"338,770"
+length of The Las Vegas Strip,"6,800"
+length of the Silverstone F1 circuit,5891
+height of Mount Kilimanjaro,5891
+length of the Monza F1 circuit,5793
+length of the Shanghai F1 circuit,5451
+length of the Istanbul  F1 circuit,5338
+height of Mount Foraker,5304
+length of the Melbourne F1 course,5303
+height of Mount Kenya,5199
+length of the Nürburg F1 circuit,5148
+length of the Singapore F1 track,5065
+height of Mont Blanc,4810
+height of Mount Rainier,4392
+length of the Mexico F1 circuit,4304
+length of The Hollywood Walk of Fame,3900
+height of Mount Fuji,3776
+height of Mount Olympus,2918
+height of El Capitan,2307
+height of Ben Nevis,1344
+"length of La Rambla, Barcelona",1200
+height of Table Mountain,1055
+"height of the Medanoso dune, chile",550
+"height of the Eiffel Tower, Paris",300
+"height of The Golden Gate Bridge, San Francisco",227
+"height of the Burj Khalifa, Dubai",180
+"height of The Washington Monument, USA",169.29
+"the current height of the Great Pyramid of Giza, Egypt",138.8
+length of the ISS,108.814
+length of the Hollywood Sign,106.7
+"height of Big Ben, London",96
+length of tape in a compact cassette,85.73
+length of a Boeing 747,71
+wingspan of a Boeing 747,68.5
+"height of the Leaning Tower of Pisa, Italy",55.86
+"height of Nelson's Column, London, England",51.64
+"height of the Arc de Triomphe, Paris",50
+length of a standard toilet roll,33.6
+length of a Cricket Pitch,20.1168
+length of a bowling lane,19.156
+length of a large shipping container,12.2
+height of a telegraph pole,11
+length of a London bus,8.382
+length of a small shipping container,6.1
+average length of pickup truck,5.45
+length of an average hatchback car,4.27
+length of a male tiger,2.9
+height of the average door,2.03
+height of Usain Bolt,1.95
+height of Barack Obama,1.87
+height of the average US male,1.77
+height of the global average male,1.765
+height of an emu,1.75
 height of the average US female,1.63
 height of the global average female,1.63
-height of an emu,1.75
-height of the global average male,1.765
-height of the average US male,1.77
-height of Barack Obama,1.87
-height of Usain Bolt,1.95
-height of the average door,2.03
-length of a male tiger,2.9
-length of an average hatchback car,4.27
-average length of pickup truck,5.45
-length of a London bus,8.382
-height of a telegraph pole,11
-length of a bowling lane,19.156
-length of a standard toilet roll,33.6
-"height of the Arc de Triomphe, Paris",50
-"height of the Leaning Tower of Pisa, Italy",55.86
-wingspan of a Boeing 747,68.5
-length of a Boeing 747,71
-"height of Big Ben, London",96
-length of the Hollywood Sign,106.7
-length of the ISS,108.814
-"the current height of the Great Pyramid of Giza, Egypt",138.8
-"height of the Burj Khalifa, Dubai",180
-"height of the Eiffel Tower, Paris",300
-"length of La Rambla, Barcelona",1200
-total length of the London Underground,402336
-distance from New York to Los Angeles,2445430
-distance between New York and London,5585000
-width of a mitochondrion,0.000001875
-length of a cells nucleus,0.000006
+length of a 35mm film roll (36 shots),1.52
+width of a baby grand piano,1.46
+length of a men's tie,1.4478
+width of a 60 inch TV,1.328
+height of a greater flamingo,1.3
+circumference of a car wheel (without a tire),1
+width of a large fridge,1
+height of most countertops,1
+length of a hockey stick,0.9271
+average height of desk,0.762
+length of a woman's Footstep,0.66
+width of a 24 inch monitor,0.61214
+width of a standard dishwasher,0.6096
+width of the Mona Lisa,0.53
+average height of a desk chair,0.4572
+diameter of a regulation dart board,0.451
+height of a bowling pin,0.381
+height of a 720ml wine bottle,0.3048
+length of a loaf of bread,0.3
+length of a peice of A4 paper,0.297
+diameter of an ultimate frisbee,0.235
+diameter of a football,0.219964
+diameter of a bowling ball,0.2159
+length of a toothbrush,0.2
+length of a pencil,0.1905
+length of the average banana,0.1778
+length of a US $20 note,0.166
+length of an iPhone 12,0.1467
+length of a playing card,0.089
+lenght of a normal rubber duck,0.085
+maximum diameter of a pebble,0.064
+average diameter of a tomato,0.06
+minimum diameter of a golf ball,0.042672
+size of the average pea,0.008
+minimum diameter of a pebble,0.004
+width of a Strand of Spaghetti,0.0017
 size of a grain of sand,0.00125
-length of the Singapore F1 track,5065
-length of the Shanghai F1 circuit,5451
-length of the Melbourne F1 course,5303
-length of the Mexico F1 circuit,4304
-length of the Monza F1 circuit,5793
-length of the Silverstone F1 circuit,5891
-length of the Nürburg F1 circuit,5148
-length of the Istanbul  F1 circuit,5338
+width of a human hair,0.0000254
+length of a Red Blood Cell,0.0000075
+length of a cells nucleus,0.000006
+width of a mitochondrion,0.000001875
+diameter of an atom,0.000000003

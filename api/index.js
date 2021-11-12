@@ -1,44 +1,31 @@
-const csv = require("csvtojson");
+let csv = require("csvtojson");
 
-function getMeasurement(dist) {
-    csv()
-        .fromFile("files/sheet.csv")
-        .then((jsonObj) => {
-            let selectedUnit = jsonObj.sort(
-                (a, b) =>
-                Math.abs(parseInt(a["size/m"]) - req.query.measure) -
-                Math.abs(parseInt(b["size/m"]) - req.query.measure)
-            )[0];
-            return selectedUnit;
-        })
-        .catch((err) => {
-            return { ERROR: "no csv" + err };
-        });
-}
+let jsonArrayObj;
 
-// module.exports = (req, res) => {
-//     if (!req.query.measure) {
-//         return res.json({ body: { ERROR: "No measurement supplied" } });
-//     } else {
-//         return res.json({ body: getMeasurement(parseInt(req.query.measure)) });
-//     }
+csv()
+    .fromFile("files/sheet.csv")
+    .then(function(json) {
+        jsonArrayObj = json;
 
-//     // res.json({ body: "HELLO" });
-// };
+        // console.log("closest object", selectedObject);
+        // console.log("closest objects", allClosestObjects);
+        // console.log("chosen object", thisObject);
+
+        // let result = {
+        //     measureName: thisObject["Measurement Name"],
+        //     actualValue: thisObject["size/m"],
+        // };
+
+        // console.log(result);
+    });
 
 const allowCors = (fn) => async(req, res) => {
     res.setHeader("Access-Control-Allow-Credentials", true);
     res.setHeader("Access-Control-Allow-Origin", "*");
     // another common pattern
     // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-    );
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-    );
+    res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
+    res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
     if (req.method === "OPTIONS") {
         res.status(200).end();
         return;
@@ -48,29 +35,25 @@ const allowCors = (fn) => async(req, res) => {
 
 const handler = (req, res) => {
     if (!req.query.measure) {
-        res.json({
+        res.status(400).json({
             ERROR: "No measurement supplied!",
         });
     } else {
-        csv()
-            .fromFile("files/sheet.csv")
-            .then((jsonObj) => {
-                let selectedUnit = jsonObj.sort(
-                    (a, b) =>
-                    Math.abs(parseInt(a["size/m"]) - req.query.measure) -
-                    Math.abs(parseInt(b["size/m"]) - req.query.measure)
-                )[0];
-                selectedUnit.measureName = selectedUnit["Measurement Name"];
-                selectedUnit.actualValue = selectedUnit["size/m"];
-                delete selectedUnit["Measurement Name"];
-                delete selectedUnit["size/m"];
-                console.log(selectedUnit);
-                res.json(selectedUnit);
-            })
-            .catch((err) => {
-                // return { ERROR: "no csv" + err };
-                res.json({ ERROR: "no csv" + err });
-            });
+        json = json.map((obj) => {
+            return { measureName: obj["Measurement Name"], actualValue: parseFloat(obj["size/m"].replace(/,/g, ""), 10) };
+        });
+
+        let selectedObject = jsonArrayObj.reduce((a, b) => {
+            return Math.abs(b.actualValue - 1) < Math.abs(a.actualValue - 1) ? b : a;
+        });
+
+        let allClosestObjects = jsonArrayObj.filter((f) => {
+            return f.actualValue == selectedObject.actualValue;
+        });
+
+        let thisObject = allClosestObjects[Math.floor(Math.random() * allClosestObjects.length)];
+
+        res.status(200).json(thisObject);
     }
 };
 
