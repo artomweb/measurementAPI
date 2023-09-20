@@ -20,3 +20,8 @@ This can be used in the following sentence:
 > Today I ran 1.2Km, that's roughly the `length of La Rambla, Barcelona`
 
 The meaurement is in meters.
+
+# TODO:
+
+- Separate heights from distances?
+- Add more entries to database
