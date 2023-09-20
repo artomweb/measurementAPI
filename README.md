@@ -10,8 +10,8 @@ Response:
 
 ```
 {
-"measureName": "height of the average door",
-"actualValue": 2.03
+  "measureName": "height of the average door",
+  "actualValue": 2.03
 }
 ```
 
