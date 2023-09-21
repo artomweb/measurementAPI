@@ -1,6 +1,6 @@
 # Measurement API
 
-You give the API a measurement in meters and it replies with a thing which is roughly the same size.
+An API which returns approximate, wordy measurements.
 
 ## Use it like this:
 
