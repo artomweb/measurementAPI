@@ -1,23 +1,19 @@
 let csv = require("csvtojson");
-import { kv } from "@vercel/kv";
-
-let gloablcsvData; // Global variable to store CSV data
 
 function getData() {
   return new Promise((resolve, reject) => {
     csv()
       .fromFile("files/sheet.csv")
       .then(function (data) {
+        // Map the raw CSV data into a more structured format.
         data = data.map((obj) => {
           return {
-            measureName: obj["Measurement Name"],
-            actualValue: parseFloat(obj["size/m"].replace(/,/g, ""), 10),
+            measureName: obj["Measurement Name"], // Extract the "Measurement Name" field from each row.
+            actualValue: parseFloat(obj["size/m"].replace(/,/g, ""), 10), // Parse and format the "size/m" field as a float.
           };
         });
-        let csvdata = data.slice(); // Store the data globally
-        console.log("Read jsonArray");
 
-        resolve(csvdata); // Resolve the promise with the data
+        resolve(data); // Resolve the promise with the data
       })
       .catch((err) => {
         reject(err); // Reject the promise if there's an error
@@ -46,32 +42,46 @@ const allowCors = (fn) => async (req, res) => {
 };
 
 const handler = async (req, res) => {
-  if (!req.query.measure) {
-    res.status(400).json({
-      ERROR: "No measurement supplied!",
-    });
-  } else if (isNaN(req.query.measure)) {
-    res.status(400).json({
-      ERROR: "Measurement supplied is not a number!",
-    });
-  } else {
-    const csvData = await getData();
-    // console.log("csvData", csvData);
-    let selectedObject = csvData.reduce((a, b) => {
-      return Math.abs(b.actualValue - +req.query.measure) <
+  try {
+    if (!req.query.measure) {
+      // Check if 'measure' is missing in the query parameters.
+      res.status(400).json({
+        ERROR: "No measurement supplied!",
+      });
+    } else if (isNaN(req.query.measure)) {
+      // Check if 'measure' is not a valid number.
+      res.status(400).json({
+        ERROR: "Measurement supplied is not a number!",
+      });
+    } else {
+      // Parse the csv data
+      const csvData = await getData();
+
+      // Find the closest object in 'csvData' based on the absolute difference from 'measure'.
+      let selectedObject = csvData.reduce((a, b) =>
+        Math.abs(b.actualValue - +req.query.measure) <
         Math.abs(a.actualValue - +req.query.measure)
-        ? b
-        : a;
+          ? b
+          : a
+      );
+
+      // Filter objects with the same 'actualValue' as the 'selectedObject'.
+      let allClosestObjects = csvData.filter(
+        (f) => f.actualValue == selectedObject.actualValue
+      );
+
+      // Randomly select one object from 'allClosestObjects'.
+      let thisObject =
+        allClosestObjects[Math.floor(Math.random() * allClosestObjects.length)];
+
+      res.status(200).json(thisObject);
+    }
+  } catch (error) {
+    console.error("Internal Server Error:", error);
+
+    res.status(500).json({
+      ERROR: "Internal Server Error",
     });
-
-    let allClosestObjects = csvData.filter((f) => {
-      return f.actualValue == selectedObject.actualValue;
-    });
-
-    let thisObject =
-      allClosestObjects[Math.floor(Math.random() * allClosestObjects.length)];
-
-    res.status(200).json(thisObject);
   }
 };
 
