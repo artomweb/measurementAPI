@@ -8,7 +8,7 @@ An API which returns approximate, wordy measurements.
 
 Response:
 
-```
+```JSON
 {
   "measureName": "height of the average door",
   "actualValue": 2.03
