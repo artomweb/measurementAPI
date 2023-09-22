@@ -8,12 +8,12 @@ function getData() {
         // Map the raw CSV data into a more structured format.
         data = data.map((obj) => {
           return {
-            measureName: obj["Measurement Name"], // Extract the "Measurement Name" field from each row.
-            actualValue: parseFloat(obj["size/m"].replace(/,/g, ""), 10), // Parse and format the "size/m" field as a float.
+            measureName: obj.measureName,
+            actualValue: parseFloat(obj.actualValue.replace(/,/g, ""), 10), // Parse and format the "size/m" field as a float.
           };
         });
 
-        resolve(data); // Resolve the promise with the data
+        resolve(data);
       })
       .catch((err) => {
         reject(err); // Reject the promise if there's an error
